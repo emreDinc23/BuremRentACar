@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{35AC3307-D1E9-4558-9E46-F10C5D0D3746}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{82F62718-359E-4E90-A5B5-01BC61C5B6DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentacarPersistence", "Infrastructure\RentacarPersistence\RentacarPersistence.csproj", "{32205496-062B-4B3F-8C4D-E39097BC2DA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{838B6A4A-CDF2-46C4-AD51-F9890909B078}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rentacar.WebApi", "Presentation\Rentacar.WebApi\Rentacar.WebApi.csproj", "{649F28E2-4315-4068-AE89-B6CD61535B9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentacarApplication", "Core\RentacarApplication\RentacarApplication.csproj", "{0756A414-635E-43CB-96AA-17D80592C9CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{6672B780-1208-49C4-B0F4-1A84F1609E94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentacarprojectWebUI", "Frontends\RentacarprojectWebUI\RentacarprojectWebUI.csproj", "{3615F19A-8045-474A-8C94-7453675836D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rentacarproject.Dto", "Frontends\Rentacarproject.Dto\Rentacarproject.Dto.csproj", "{5BC2E335-7626-4C0B-9CDD-431FF4F146F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentacarDomain", "..\..\..\OneDrive\Masaüstü\Yeni klasör\RentacarDomain.csproj", "{5172400B-C513-461F-8478-1F79E80F07D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32205496-062B-4B3F-8C4D-E39097BC2DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32205496-062B-4B3F-8C4D-E39097BC2DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32205496-062B-4B3F-8C4D-E39097BC2DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32205496-062B-4B3F-8C4D-E39097BC2DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{649F28E2-4315-4068-AE89-B6CD61535B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649F28E2-4315-4068-AE89-B6CD61535B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649F28E2-4315-4068-AE89-B6CD61535B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649F28E2-4315-4068-AE89-B6CD61535B9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0756A414-635E-43CB-96AA-17D80592C9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0756A414-635E-43CB-96AA-17D80592C9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0756A414-635E-43CB-96AA-17D80592C9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0756A414-635E-43CB-96AA-17D80592C9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3615F19A-8045-474A-8C94-7453675836D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3615F19A-8045-474A-8C94-7453675836D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3615F19A-8045-474A-8C94-7453675836D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3615F19A-8045-474A-8C94-7453675836D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC2E335-7626-4C0B-9CDD-431FF4F146F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC2E335-7626-4C0B-9CDD-431FF4F146F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC2E335-7626-4C0B-9CDD-431FF4F146F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC2E335-7626-4C0B-9CDD-431FF4F146F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5172400B-C513-461F-8478-1F79E80F07D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5172400B-C513-461F-8478-1F79E80F07D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5172400B-C513-461F-8478-1F79E80F07D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5172400B-C513-461F-8478-1F79E80F07D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{32205496-062B-4B3F-8C4D-E39097BC2DA2} = {82F62718-359E-4E90-A5B5-01BC61C5B6DD}
+		{649F28E2-4315-4068-AE89-B6CD61535B9A} = {838B6A4A-CDF2-46C4-AD51-F9890909B078}
+		{0756A414-635E-43CB-96AA-17D80592C9CC} = {35AC3307-D1E9-4558-9E46-F10C5D0D3746}
+		{3615F19A-8045-474A-8C94-7453675836D5} = {6672B780-1208-49C4-B0F4-1A84F1609E94}
+		{5BC2E335-7626-4C0B-9CDD-431FF4F146F1} = {6672B780-1208-49C4-B0F4-1A84F1609E94}
+		{5172400B-C513-461F-8478-1F79E80F07D9} = {35AC3307-D1E9-4558-9E46-F10C5D0D3746}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BEB524D-4DAF-41B9-ABAA-940627D17C0E}
+	EndGlobalSection
+EndGlobal
