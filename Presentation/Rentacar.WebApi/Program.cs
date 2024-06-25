@@ -7,11 +7,15 @@ using RentacarApplication.Features.CQRS.Handlers.ContactHandlers;
 using RentacarApplication.Interfaces;
 using RentacarApplication.Interfaces.BlogInterfaces;
 using RentacarApplication.Interfaces.CarInterfaces;
+using RentacarApplication.Interfaces.TagCloudInterfaces;
 using RentacarApplication.Services;
 using RentacarPersistence.Context;
 using RentacarPersistence.Repositories;
 using RentacarPersistence.Repositories.BlogRepositories;
+using RentacarPersistence.Repositories.CarPricingRepositories;
 using RentacarPersistence.Repositories.CarRepositories;
+using RentacarPersistence.Repositories.TagCloudRepositories;
+using Rentacarproject.RentacarApplication.Interfaces.CarPricingInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<RentacarContext>();
@@ -19,6 +23,8 @@ builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
+builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
+builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
 
 
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -46,6 +52,8 @@ builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
 builder.Services.AddScoped<GetLast5CarWithBrandQueryHandler>();
+
+
 
 
 builder.Services.AddScoped<GetCategoryQueryHandler>();

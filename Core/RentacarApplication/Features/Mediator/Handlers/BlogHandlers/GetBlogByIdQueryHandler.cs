@@ -26,7 +26,7 @@ namespace RentacarApplication.Features.Mediator.Handlers.BlogHandlers
             {
 
                 BlogID = value.BlogID,
-                CreatedDate = value.CreatedDate,
+                CreatedDate = value.CreatedDate,                
                 Title = value.Title,
                 Description = value.Description,
                 CoverImageUrl = value.CoverImageUrl,

@@ -36,5 +36,7 @@ namespace RentacarPersistence.Context
 
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<TagCloud> TagClouds{ get; set; }
+        public DbSet<Comment> Comments{ get; set; }
     }
 }

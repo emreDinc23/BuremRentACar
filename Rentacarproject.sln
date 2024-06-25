@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentacarprojectWebUI", "Fro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rentacarproject.Dto", "Frontends\Rentacarproject.Dto\Rentacarproject.Dto.csproj", "{5BC2E335-7626-4C0B-9CDD-431FF4F146F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentacarDomain", "..\..\..\OneDrive\Masaüstü\Yeni klasör\RentacarDomain.csproj", "{5172400B-C513-461F-8478-1F79E80F07D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentacarDomain", "Core\RentacarDomain\RentacarDomain.csproj", "{5172400B-C513-461F-8478-1F79E80F07D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

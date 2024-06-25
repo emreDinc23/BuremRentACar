@@ -21,14 +21,17 @@ namespace RentacarPersistence.Repositories.CarRepositories
 
         public List<Car> GerCarsListWithBrands()
         {
-            var values = _context.Cars.Include(x=>x.Brand).ToList();
+            var values = _context.Cars.Include(x => x.Brand).ToList();
             return values;
         }
 
+       
+
         public List<Car> GetLast5CarsWithBrands()
         {
-           var values = _context.Cars.Include(x => x.Brand).OrderByDescending(x => x.CarID).Take(5).ToList();
-           return values;
+            var values = _context.Cars.Include(x => x.Brand).OrderByDescending(x => x.CarID).Take(5).ToList();
+            return values;
         }
+
     }
 }

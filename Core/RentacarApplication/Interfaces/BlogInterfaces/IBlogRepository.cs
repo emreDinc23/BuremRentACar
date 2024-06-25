@@ -10,5 +10,7 @@ namespace RentacarApplication.Interfaces.BlogInterfaces
     public interface IBlogRepository
     {
         public List<Blog> GetLast3BlogsWithAuthor();
+        public List<Blog> GetAllBlogsWithAuthor();
+        public List<Blog> GetAuthorDetailByBlog(int id);
     }
 }

@@ -294,6 +294,35 @@ namespace RentacarPersistence.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("RentacarDomain.Entity.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("RentacarDomain.Entity.Contact", b =>
                 {
                     b.Property<int>("ContactID")
@@ -456,6 +485,28 @@ namespace RentacarPersistence.Migrations
                     b.ToTable("SocialMedias");
                 });
 
+            modelBuilder.Entity("RentacarDomain.Entity.TagCloud", b =>
+                {
+                    b.Property<int>("TagCloudId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagCloudId"));
+
+                    b.Property<int>("BlogID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TagCloudId");
+
+                    b.HasIndex("BlogID");
+
+                    b.ToTable("TagClouds");
+                });
+
             modelBuilder.Entity("RentacarDomain.Entity.Testimonial", b =>
                 {
                     b.Property<int>("TestimonialID")
@@ -564,9 +615,38 @@ namespace RentacarPersistence.Migrations
                     b.Navigation("Pricing");
                 });
 
+            modelBuilder.Entity("RentacarDomain.Entity.Comment", b =>
+                {
+                    b.HasOne("RentacarDomain.Entity.Blog", "Blog")
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
+            modelBuilder.Entity("RentacarDomain.Entity.TagCloud", b =>
+                {
+                    b.HasOne("RentacarDomain.Entity.Blog", "Blog")
+                        .WithMany("TagClouds")
+                        .HasForeignKey("BlogID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("RentacarDomain.Entity.Author", b =>
                 {
                     b.Navigation("blogs");
+                });
+
+            modelBuilder.Entity("RentacarDomain.Entity.Blog", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("TagClouds");
                 });
 
             modelBuilder.Entity("RentacarDomain.Entity.Brand", b =>

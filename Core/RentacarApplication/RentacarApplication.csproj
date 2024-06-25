@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\..\OneDrive\Masaüstü\Yeni klasör\RentacarDomain.csproj" />
+
 		<ProjectReference Include="..\RentacarDomain\RentacarDomain.csproj" />
 	</ItemGroup>
 
@@ -15,6 +15,10 @@
 		<PackageReference Include="MediatR" Version="12.3.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Features\RepositoryPattern\CommentRepositories\" />
 	</ItemGroup>
 
 </Project>

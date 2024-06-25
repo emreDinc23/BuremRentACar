@@ -49,9 +49,21 @@ namespace Rentacar.WebApi.Controllers
         }
 
         [HttpGet("GetLast3BlogsWithAuthorQueryResult")]
-        public async Task<IActionResult> GetLast3BlogsWithAuthorQueryResult()
+        public async Task<IActionResult> GetLast3BlogsWithAuthorList()
         {
             var result = await _mediator.Send(new GetLast3BlogsWithAuthorQuery());
+            return Ok(result);
+        }
+        [HttpGet("GetAllBlogsWithAuthorQueryResult")]
+        public async Task<IActionResult> GetAllBlogsWithAuthorList()
+        {
+            var result = await _mediator.Send(new GetAllBlogsWithAuthorQuery());
+            return Ok(result);
+        }
+        [HttpGet("GetAuthorDetailByBlog")]
+        public async Task<IActionResult> GetAuthorDetailByBlog(int id)
+        {
+            var result = await _mediator.Send(new GetAuthorDetailByBlogQuery(id));
             return Ok(result);
         }
     }

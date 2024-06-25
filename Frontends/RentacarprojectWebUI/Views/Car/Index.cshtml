@@ -1,5 +1,5 @@
-﻿@using Rentacarproject.Dto.CarDtos
-@model List<ResultCarWithBrandDto>
+﻿@using Rentacarproject.Dto.CarPricingDtos
+@model List<ResultCarPricingDto>
 @{
 ViewData["Title"] = "Index";
 Layout = "~/Views/UILayout/Index.cshtml";
@@ -12,13 +12,13 @@ Layout = "~/Views/UILayout/Index.cshtml";
         {
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
-                <div class="img rounded d-flex align-items-end" style="background-image: url(@item.coverImageUrl);">
+                <div class="img rounded d-flex align-items-end" style="background-image: url(@item.CoverImageUrl);">
                 </div>
                 <div class="text">
-                    <h2 class="mb-0"><a href="car-single.html">@item.model</a></h2>
+                    <h2 class="mb-0"><a href="car-single.html">@item.Model</a></h2>
                     <div class="d-flex mb-3">
-                        <span class="cat">@item.brandName</span>
-                        <p class="price ml-auto">₺1200 <span>/gün</span></p>
+                        <span class="cat">@item.Brand</span>
+                        <p class="price ml-auto">₺@item.Amount <span>/gün</span></p>
                     </div>
                     <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
                 </div>
