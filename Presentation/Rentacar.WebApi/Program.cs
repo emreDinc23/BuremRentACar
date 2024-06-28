@@ -4,16 +4,19 @@ using RentacarApplication.Features.CQRS.Handlers.BrandHandlers;
 using RentacarApplication.Features.CQRS.Handlers.CarHandlers;
 using RentacarApplication.Features.CQRS.Handlers.CategoryHandlers;
 using RentacarApplication.Features.CQRS.Handlers.ContactHandlers;
+using RentacarApplication.Features.RepositoryPattern;
 using RentacarApplication.Interfaces;
 using RentacarApplication.Interfaces.BlogInterfaces;
 using RentacarApplication.Interfaces.CarInterfaces;
 using RentacarApplication.Interfaces.TagCloudInterfaces;
 using RentacarApplication.Services;
+using RentacarDomain.Entity;
 using RentacarPersistence.Context;
 using RentacarPersistence.Repositories;
 using RentacarPersistence.Repositories.BlogRepositories;
 using RentacarPersistence.Repositories.CarPricingRepositories;
 using RentacarPersistence.Repositories.CarRepositories;
+using RentacarPersistence.Repositories.CommentRepositories;
 using RentacarPersistence.Repositories.TagCloudRepositories;
 using Rentacarproject.RentacarApplication.Interfaces.CarPricingInterfaces;
 
@@ -25,6 +28,8 @@ builder.Services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
 builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
+
 
 
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -74,6 +79,7 @@ builder.Services.AddApplicationService(builder.Configuration);
 
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -92,5 +98,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
