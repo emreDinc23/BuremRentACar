@@ -1,0 +1,54 @@
+﻿@model List<Rentacarproject.Dto.BannerDtos.ResultBannerDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int Index = 1;
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Araba Özellikleri Listesi</h4>
+                <p class="card-subtitle mb-4">
+                    Arabaların bluetooth koltuk ısıtma vb. özelliklerini bu kısımdan inceleyip ekleme ve silme işlemleri yapabilirsiniz.
+                </p>
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Video Url</th>
+                        <th>Description</th>
+                        <th>Title</th>
+                        <th>Video Description</th>
+                        <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach(var x in Model)
+                    {
+                        <tr>
+                            <td>@Index</td>
+                            <td>@x.VideoUrl</td>
+                            <td>@x.Description</td>
+                            <td>@x.Title</td>   
+                            <td>@x.VideoDescription</td>
+                            <td>
+                                <a href="@Url.Action("Update", "Brand", new { area = "Admin", id = x.BannerID })" class="btn btn-sm btn-warning">Güncelle</a>
+                                <a href="@Url.Action("Delete", "Brand", new { area = "Admin", id = x.BannerID })" class="btn btn-sm btn-danger">Sil</a>
+                            </td>
+                        </tr>
+                    
+                        Index++;
+                        
+                    }
+                    <tbody>
+                </table>
+                <a href="@Url.Action("Create", "Brand", new { area = "Admin" })" class="btn btn-primary mt-3">Yeni Banner Ekle</a>
+
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>

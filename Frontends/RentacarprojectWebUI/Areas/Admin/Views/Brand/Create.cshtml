@@ -1,0 +1,39 @@
+﻿@model Rentacarproject.Dto.BrandDtos.CreateBrandDto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yeni Marka Girişi</h4>
+                        <p class="card-subtitle mb-4">Araç markaları ile ilgili temel bilgileri eksiksiz doldurmanız önemlidir. Veri girişlerinden sonra kaydet butonuna tıklayarak işlemi tamamlayabilirsiniz.</p>
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label asp-for="@Model.Name">Özellik İsmi</label>
+                                <input type="text" class="form-control" id="exampleInputCoverImage" maxlength="50" asp-for="Name" placeholder="Araç Özelliği Giriniz">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Marka Kaydet</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+
+    </div>
+    <!-- end col -->
+
+</div>
+
+

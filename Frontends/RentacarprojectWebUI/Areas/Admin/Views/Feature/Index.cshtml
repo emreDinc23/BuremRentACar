@@ -1,0 +1,42 @@
+﻿@using Rentacarproject.Dto.FeatureDtos;
+@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+<div class="col-12">
+<div class="card">
+<div class="card-body">
+
+<h4 class="card-title">Araba Özellikleri Listesi</h4>
+<p class="card-subtitle mb-4">
+    Arabaların bluetooth koltuk ısıtma vb. özelliklerini bu kısımdan inceleyip ekleme ve silme işlemleri yapabilirsiniz.
+</p>
+<table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+<thead>
+<tr>
+    <th>Id</th>
+    <th>Özellik İsmi</th>   </tr>
+</thead>
+<tbody>
+@foreach(var x in Model)
+{
+    <tr>
+        <td>@x.FeatureID</td>
+        <td>@x.Name</td>
+        <td>
+            <a href="@Url.Action("Update", "Feature", new { area = "Admin", id = x.FeatureID })" class="btn btn-sm btn-warning">Güncelle</a>
+            <a href="@Url.Action("Delete", "Feature", new { area = "Admin", id = x.FeatureID })" class="btn btn-sm btn-danger">Sil</a>
+        </td>
+    </tr>
+}
+<tbody>
+</table>
+<a href="@Url.Action("Create", "Feature", new { area = "Admin" })" class="btn btn-primary mt-3">Yeni Araç Ekle</a>
+
+</div> <!-- end card body-->
+</div> <!-- end card -->
+</div><!-- end col-->
+</div>

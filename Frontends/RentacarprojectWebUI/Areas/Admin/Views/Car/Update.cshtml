@@ -1,0 +1,79 @@
+﻿@model Rentacarproject.Dto.CarDtos.ResultCarDto
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bootstrap MaxLength</h4>
+                <p class="card-subtitle mb-4">Uses the HTML5 attribute "maxlength" to work.</p>
+                <form asp-action="Update">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div hidden class="form-group ">
+                        <label asp-for="CarID">Default usage</label>
+                        <input type="text" class="form-control" maxlength="25" asp-for="CarID" id="defaultconfig" />                        
+                        <span asp-validation-for="CarID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Marka</label>
+
+                        <select asp-for="BrandID" asp-items="ViewBag.BrandValues" class="form-control" >                           
+                        </select>
+                        <span asp-validation-for="BrandID" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label asp-for="Model" class="control-label"></label>
+                        <input  asp-for="Model" type="text" class="form-control" maxlength="50" id="defaultconfig" />
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CoverImageUrl" class="control-label"></label>
+                        <input type="text" asp-for="CoverImageUrl" class="form-control" maxlength="250" id="defaultconfig" />
+                        <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Km" class="control-label"></label>
+                        <input type="number" asp-for="Km" class="form-control" maxlength="20" id="defaultconfig" />
+                        <span asp-validation-for="Km" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Transmission" class="control-label"></label>
+                        <input type="text" asp-for="Transmission" class="form-control" maxlength="20" id="defaultconfig" />
+                        <span asp-validation-for="Transmission" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Seat" class="control-label"></label>
+                        <input type="text" asp-for="Seat" class="form-control" maxlength="10" id="defaultconfig" />
+                        <span asp-validation-for="Seat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Luggage" class="control-label"></label>
+                        <input type="number" asp-for="Luggage" class="form-control" maxlength="10" id="defaultconfig" />
+                        <span asp-validation-for="Luggage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Fuel" class="control-label"></label>
+                        <input type="text" asp-for="Fuel" class="form-control" maxlength="25" id="defaultconfig" />
+                        <span asp-validation-for="Fuel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BigImageUrl" class="control-label"></label>
+                        <input type="text" asp-for="BigImageUrl" class="form-control" maxlength="250" id="defaultconfig" />
+                        <span asp-validation-for="BigImageUrl" class="text-danger"></span>
+                    </div>
+                   
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+</div>
+        </div>
+        
+    </div>
+</div>

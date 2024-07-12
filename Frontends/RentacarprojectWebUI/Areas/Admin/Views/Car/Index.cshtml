@@ -4,19 +4,28 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
+<style>
+    .car-image {
+        width: 100px; /* Görsel genişliği */
+        height: auto; /* Yüksekliği otomatik ayarla */
+        border-radius: 8px; /* Köşeleri yuvarlat */
+        border: 1px solid #ddd; /* Hafif kenarlık */
+        padding: 5px; /* Kenarlık ile görsel arasında boşluk */
+        background-color: #f8f9fa; /* Arkaplan rengi */
+    }
+</style>
+
 <link href="~/Admin/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
 <link href="~/Admin/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
 <link href="~/Admin/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
 <link href="~/Admin/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
-
-<!-- App css -->
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Buttons example</h4>
+                <h4 class="card-title">Araba Listesi</h4>
                 <p class="card-subtitle mb-4">
                     The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page
                     that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
@@ -24,44 +33,58 @@
 
                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                     <thead>
-                        <tr>
-                            <th>Marka</th>
-                            <th>Model</th>
-                            <th>Yakıt Türü</th>
-                            <th>Vites Türü</th>
-                            <th>Kilometre</th>
-                            <th>Bagaj</th>
-                            <th>Koltuk</th>
-                        </tr>
+                    <tr>
+                       
+                        <th>Id</th>
+                        <th>Marka</th>
+                        <th>Model</th>
+                        <th>Yakıt Türü</th>
+                        <th>Vites Türü</th>
+                        <th>Kilometre</th>
+                        <th>Bagaj</th>
+                        <th>Koltuk</th>
+                        <th>İşlemler</th>
+                        <th>Image</th>
+                    </tr>
                     </thead>
 
-
                     <tbody>
-                        @foreach(var x in Model){
-                        <tr>
-                            <td>@x.brandName</td>
-                            <td>@x.model</td>
-                            <td>@x.fuel</td>
-                            <td>@x.transmission</td>
-                            <td>@x.km</td>
-                            <td>@x.luggage</td>
-                            <td>@x.seat</td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                
+                              
+                                <td>@item.carID</td>
+                                <td>@item.brandName</td>
+                                <td>@item.model</td>
+                                <td>@item.fuel</td>
+                                <td>@item.transmission</td>
+                                <td>@item.km</td>
+                                <td>@item.luggage</td>
+                                <td>@item.seat</td>
+                                <td>
+                                    <a href="@Url.Action("Update", "Car", new { area = "Admin", id = item.carID })" class="btn btn-outline-secondary waves-effect waves-light">Güncelle</a>
+                                    <a href="@Url.Action("Detail", "Car", new { area = "Admin", id = item.carID })" class="btn btn-outline-success waves-effect waves-light">Sitede Gör</a>
+                                    <a href="@Url.Action("Detail", "Car", new { area = "Admin", id = item.carID })" class="btn btn-outline-dark waves-effect waves-light">Fiyat Listesi</a>
+                                    <a href="@Url.Action("Detail", "Car", new { area = "Admin", id = item.carID })" class="btn btn-outline-info waves-effect waves-light">Detaylar</a>
+                                    <a href="@Url.Action("Delete", "Car", new { area = "Admin", id = item.carID })" class="btn btn-outline-danger waves-effect waves-light">Sil</a>
+                                </td>
+                                <td><img src="@item.coverImageUrl" alt="" class="car-image" /></td>
+                            </tr>
                         }
                     </tbody>
                 </table>
+
+                <a href="@Url.Action("Create", "Car", new { area = "Admin" })" class="btn btn-primary waves-effect waves-light">Yeni Araç Ekle</a>
+
+
 
             </div> <!-- end card body-->
         </div> <!-- end card -->
     </div><!-- end col-->
 </div>
-@section Scripts {
-    <script src="~/Admin/vertical/assets/js/jquery.min.js"></script>
-    <script src="~/Admin/vertical/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Admin/vertical/assets/js/metismenu.min.js"></script>
-    <script src="~/Admin/vertical/assets/js/waves.js"></script>
-    <script src="~/Admin/vertical/assets/js/simplebar.min.js"></script>
 
+@section Scripts {
     <!-- third party js -->
     <script src="~/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Admin/plugins/datatables/dataTables.bootstrap4.js"></script>
@@ -79,8 +102,4 @@
     <!-- third party js ends -->
     <!-- Datatables init -->
     <script src="~/Admin/vertical/assets/pages/datatables-demo.js"></script>
-
-
-    <!-- App js -->
-
 }

@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentacarApplication.Interfaces;
 using RentacarPersistence.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RentacarPersistence.Repositories
 {
@@ -26,12 +21,12 @@ namespace RentacarPersistence.Repositories
 
         public async Task<List<T>> GetAllAsync()
         {
-            return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().FindAsync(id) ?? throw new InvalidOperationException();
         }
 
         public async Task RemoveAsync(T entity)

@@ -21,7 +21,9 @@ namespace Rentacarproject.Dto.CarDtos
             public int luggage { get; set; }
             public string fuel { get; set; }
             public string bigImageUrl { get; set; }
-        }
+
+       
+    }
 
     }
 

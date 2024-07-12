@@ -61,7 +61,7 @@ namespace Rentacar.WebApi.Controllers
             return Ok("Car updated");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveCar(int id)
         {
             await _removerCarCommandHandler.Handle(new RemoveCarCommand(id));

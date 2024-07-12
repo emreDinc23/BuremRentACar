@@ -21,15 +21,15 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Top level route registrations
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Car}/{action=Index}/{id?}"
+);
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-    );
-});
+    pattern: "{controller=Default}/{action=Index}/{id?}"
+);
 
 app.Run();
