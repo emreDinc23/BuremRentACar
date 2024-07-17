@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Rentacarproject.Dto.AuthorDtos.ResultAuthorDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int Index = 1;
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<style>
+    .person-image {
+        width: 100px; /* Görsel genişliği */
+        height: auto; /* Yüksekliği otomatik ayarla */
+        border-radius: 8px; /* Köşeleri yuvarlat */
+        border: 1px solid #ddd; /* Hafif kenarlık */
+        padding: 5px; /* Kenarlık ile görsel arasında boşluk */
+        background-color: #f8f9fa; /* Arkaplan rengi */
+    }
+</style>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Author Listesi</h4>
+                <p class="card-subtitle mb-4">
+                    The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page
+                    that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AuthorID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            
+                            <th>Güncelle</th>
+                            <th>Sil</th>
+                            <th>Bloglar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Index
+                                </td>
+                                <td>
+                                    <img class="person-image" src="@item.ImageUrl" alt="image" />
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @{
+                                        // Description alanının 50 karakterden sonrasını kes
+                                        var description = item.Description;
+                                        var shortDescription = description.Length > 50 ? description.Substring(0, 50) + "..." : description;
+                                    }
+                                    @Html.Raw(shortDescription)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Update", "Author", new { area = "Admin", id =item.AuthorID })" class="btn btn-outline-secondary waves-effect waves-light">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Author", new { area = "Admin", id = item.AuthorID })" class="btn btn-outline-danger waves-effect waves-light">Sil</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Author", new { area = "Admin", id = item.AuthorID })" class="btn btn-outline-success waves-effect waves-light">Bloglarını Gör</a>
+                                </td>
+                             
+                            </tr>
+                            Index++;
+                        }
+                    </tbody>
+                </table>
+                <a href="@Url.Action("Create", "Author", new { area = "Admin" })" class="btn btn-primary waves-effect waves-light">Yeni Author Ekle</a>
+
+
+
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı',
+                text: '@TempData["SuccessMessage"]',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        });
+    </script>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata',
+                text: '@TempData["ErrorMessage"]',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        });
+    </script>
+}

@@ -47,7 +47,7 @@ namespace RentacarprojectWebUI.Areas.Admin.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync("https://localhost:7247/api/Brands/" + id);
-            if (!responseMessage.IsSuccessStatusCode) return View();
+            if (!responseMessage.IsSuccessStatusCode) return View("Error");
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Update(int id)
@@ -69,5 +69,7 @@ namespace RentacarprojectWebUI.Areas.Admin.Controllers
             if (!responseMessage.IsSuccessStatusCode) return View();
             return RedirectToAction("Index");
         }
+
+
     }
 }

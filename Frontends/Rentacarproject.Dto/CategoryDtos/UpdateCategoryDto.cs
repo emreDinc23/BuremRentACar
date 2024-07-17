@@ -1,6 +1,6 @@
 ﻿namespace Rentacarproject.Dto.CategoryDtos
 {
-    public class ResultCategoryDto
+    public class UpdateCategoryDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
