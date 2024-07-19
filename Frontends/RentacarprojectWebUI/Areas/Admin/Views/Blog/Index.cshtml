@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Rentacarproject.Dto.BlogDtos.ResultAllBlogWithAuthorDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int Index = 1;
+}
+<link href="~/Admin/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Araba Listesi</h4>
+                <p class="card-subtitle mb-4">
+                    The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page
+                    that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                </p>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.blogID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.createdDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.coverImageUrl)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.authorId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.author)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.categoryId)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Index
+                                </td>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.coverImageUrl)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.authorId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.author)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.categoryId)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Blog", new { area = "Admin", id = item.blogID })" class="btn btn-outline-secondary waves-effect waves-light">Güncelle</a>
+                                    <a href="@Url.Action("Delete", "Blog", new { area = "Admin", id = item.blogID })" class="btn btn-outline-danger waves-effect waves-light">Sil</a>
+                                </td>
+                            </tr>
+                            Index++;
+                        }
+                    </tbody>
+                </table>
+
+                <a href="@Url.Action("Create", "Blog", new { area = "Admin" })" class="btn btn-primary waves-effect waves-light">Yeni Araç Ekle</a>
+
+
+
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div><!-- end col-->
+</div>
+
+@section Scripts {
+    <!-- third party js -->
+    <script src="~/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Admin/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script src="~/Admin/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Admin/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="~/Admin/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/Admin/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/Admin/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/Admin/plugins/datatables/buttons.flash.min.js"></script>
+    <script src="~/Admin/plugins/datatables/buttons.print.min.js"></script>
+    <script src="~/Admin/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/Admin/plugins/datatables/dataTables.select.min.js"></script>
+    <script src="~/Admin/plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/Admin/plugins/datatables/vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="~/Admin/vertical/assets/pages/datatables-demo.js"></script>
+}
