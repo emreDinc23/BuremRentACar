@@ -6,13 +6,14 @@ using RentacarApplication.Features.CQRS.Handlers.CategoryHandlers;
 using RentacarApplication.Features.CQRS.Handlers.ContactHandlers;
 using RentacarApplication.Features.RepositoryPattern;
 using RentacarApplication.Interfaces;
+using RentacarApplication.Interfaces.BlogCommentsRepository;
 using RentacarApplication.Interfaces.BlogInterfaces;
 using RentacarApplication.Interfaces.CarInterfaces;
 using RentacarApplication.Interfaces.TagCloudInterfaces;
 using RentacarApplication.Services;
-using RentacarDomain.Entity;
 using RentacarPersistence.Context;
 using RentacarPersistence.Repositories;
+using RentacarPersistence.Repositories.BlogCommentsRepositories;
 using RentacarPersistence.Repositories.BlogRepositories;
 using RentacarPersistence.Repositories.CarPricingRepositories;
 using RentacarPersistence.Repositories.CarRepositories;
@@ -29,6 +30,7 @@ builder.Services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
 builder.Services.AddScoped(typeof(ITagCloudRepository), typeof(TagCloudRepository));
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(CommentRepository<>));
+builder.Services.AddScoped(typeof(IBlogCommentRepository), typeof(BlogCommentRepository));
 
 
 

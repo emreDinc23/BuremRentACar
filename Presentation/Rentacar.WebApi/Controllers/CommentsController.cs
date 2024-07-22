@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RentacarApplication.Features.RepositoryPattern;
+using RentacarApplication.Interfaces.BlogCommentsRepository;
 using RentacarDomain.Entity;
 
 namespace Rentacar.WebApi.Controllers
@@ -10,10 +10,13 @@ namespace Rentacar.WebApi.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly IGenericRepository<Comment> _commentRepository;
+        private readonly IBlogCommentRepository _blogCommentRepository;
 
-        public CommentsController(IGenericRepository<Comment> commentRepository)
+
+        public CommentsController(IGenericRepository<Comment> commentRepository, IBlogCommentRepository blogCommentRepository)
         {
             _commentRepository = commentRepository;
+            _blogCommentRepository = blogCommentRepository;
         }
 
         [HttpGet]
@@ -46,6 +49,13 @@ namespace Rentacar.WebApi.Controllers
         {
             var comment = _commentRepository.GetById(id);
             return Ok(comment);
+        }
+        [HttpGet]
+        [Route("GetBlogCommentsByBlogId/{id}")]
+        public IActionResult GetBlogCommentsByBlogId(int id)
+        {
+            var comments = _blogCommentRepository.GetBlogCommentsByBlogId(id);
+            return Ok(comments);
         }
 
     }

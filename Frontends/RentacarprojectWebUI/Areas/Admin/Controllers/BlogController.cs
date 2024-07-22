@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using Rentacarproject.Dto.BlogDtos;
+using Rentacarproject.Dto.CommentsDto;
 using System.Text;
 
 namespace RentacarprojectWebUI.Areas.Admin.Controllers
@@ -19,7 +19,7 @@ namespace RentacarprojectWebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7247/api/Blogs");
+            var response = await client.GetAsync("https://localhost:7247/api/Blogs/GetAllBlogsWithAuthorQueryResult");
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
@@ -29,35 +29,13 @@ namespace RentacarprojectWebUI.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7247/api/Authors");
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultAuthorDetailByBlogDto>>(jsonData);
-            List<SelectListItem> authorValues = (from x in values
-                                                 select new SelectListItem
-                                                 {
-                                                     Text = x.AuthorName,
-                                                     Value = x.AuthorID.ToString()
-                                                 }).ToList();
-            ViewBag.AuthorValues = authorValues;
+
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateBlogDto createBlogDto)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createBlogDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7247/api/Blogs", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
+
 
         public async Task<IActionResult> Edit(int id)
         {
@@ -66,17 +44,17 @@ namespace RentacarprojectWebUI.Areas.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
-                var blog = JsonConvert.DeserializeObject<ResultAllBlogWithAuthorDto>(data);
+                var blog = JsonConvert.DeserializeObject<UpdateBlogDto>(data);
                 return View(blog);
             }
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(ResultAllBlogWithAuthorDto resultAllBlogWithAuthorDto)
+        public async Task<IActionResult> Edit(UpdateBlogDto updateBlogDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(resultAllBlogWithAuthorDto);
+            var jsonData = JsonConvert.SerializeObject(updateBlogDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PutAsync("https://localhost:7247/api/Blogs", stringContent);
             if (responseMessage.IsSuccessStatusCode)
@@ -96,5 +74,24 @@ namespace RentacarprojectWebUI.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Comments(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync($"https://localhost:7247/api/Comments/GetBlogCommentsByBlogId/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrEmpty(data))
+                {
+                    return View(new List<ResultCommentDto>());
+                }
+                var comments = JsonConvert.DeserializeObject<List<ResultCommentDto>>(data);
+                return View(comments);
+            }
+            return View(new List<ResultCommentDto>());
+        }
+
     }
 }
