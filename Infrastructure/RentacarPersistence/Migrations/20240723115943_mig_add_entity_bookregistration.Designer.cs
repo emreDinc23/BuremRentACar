@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentacarPersistence.Context;
 
@@ -11,9 +12,11 @@ using RentacarPersistence.Context;
 namespace RentacarPersistence.Migrations
 {
     [DbContext(typeof(RentacarContext))]
-    partial class RentacarContextModelSnapshot : ModelSnapshot
+    [Migration("20240723115943_mig_add_entity_bookregistration")]
+    partial class mig_add_entity_bookregistration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

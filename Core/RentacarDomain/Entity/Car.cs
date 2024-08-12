@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RentacarDomain.Entity
+﻿namespace RentacarDomain.Entity
 {
     public class Car
     {
@@ -24,5 +18,6 @@ namespace RentacarDomain.Entity
         public List<CarFeature> CarFeatures { get; set; }
         public List<CarDescription> CarDescriptions { get; set; }
         public List<CarPricing> CarPricings { get; set; }
+        public List<BookRegistration> BookRegistrations { get; set; }
     }
 }

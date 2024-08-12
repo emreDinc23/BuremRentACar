@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentacarDomain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RentacarPersistence.Context
 {
@@ -30,13 +25,14 @@ namespace RentacarPersistence.Context
         public DbSet<Pricing> Pricings { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
-        public DbSet<Author> Authors{ get; set; }
+        public DbSet<Author> Authors { get; set; }
 
-        public DbSet<Blog> Blogs{ get; set; }
+        public DbSet<Blog> Blogs { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<TagCloud> TagClouds{ get; set; }
-        public DbSet<Comment> Comments{ get; set; }
+        public DbSet<TagCloud> TagClouds { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<BookRegistration> BookRegistrations { get; set; }
     }
 }
